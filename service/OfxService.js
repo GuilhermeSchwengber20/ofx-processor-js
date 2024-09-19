@@ -11,7 +11,7 @@ class OfxService {
         try {
             const base64Data = ofxData;
             let ofxString = Buffer.from(base64Data, "base64").toString("utf8");
-            const invalidChars = /[&*()!@#$%_\-]/g;
+            const invalidChars = /[&*()!@#$%\_]/g;
             ofxString = ofxString.replace(invalidChars, '');
             const parsedData = ofx?.parse(ofxString);
     
@@ -47,7 +47,7 @@ class OfxService {
                 observacao: ofxTransaction.MEMO,
                 nmrMovimentacao: ofxTransaction.FITID,
                 metodoPgto: ofxTransaction.TRNTYPE,
-                tipo: this.setTypeTransaction(ofxTransaction.TRNAMT)
+                tipo: this.setTypeTransaction(Number(ofxTransaction?.TRNAMT || 0))
             };
         } catch (error) {
             console.log("esta caindo aqui");
