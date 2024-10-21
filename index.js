@@ -1,13 +1,10 @@
 const express = require("express");
-
 const bodyParser = require("body-parser");
-
 const cors = require("cors");
-
-const ofxRoutes = require("./routes/ofxRoutes");
+const routes = require("./routes/routes.js");
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.use(cors({
     origin: "*",
@@ -18,7 +15,7 @@ app.use(cors({
 
 app.use(bodyParser.json());
 
-app.use("/ofx", ofxRoutes);
+app.use(routes);
 
 
 app.listen(port, () => {

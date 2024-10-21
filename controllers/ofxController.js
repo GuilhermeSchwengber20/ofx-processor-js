@@ -1,5 +1,5 @@
-const OfxModel = require("../models/ofxModel");
-const OfxService = require("../service/OfxService");
+const OfxService = require("../service/OfxService.js");
+
 class OfxController {
     static getProcessedOfx(req, res) {
         const ofxData = req.body.ofxData;
@@ -17,24 +17,6 @@ class OfxController {
 
         res.status(400);
         res.json({error: "Algo inesperado aconteceu, por favor tente novamente"})
-
-        // console.log("-----------------")
-        // const base64Data = ofxData;
-        // console.log("Recebeu ofxData")
-        // console.log("-----------------")
-        // const ofxString = Buffer.from(base64Data, "base64").toString("utf8");
-
-        // const parsedData = ofx.parse(ofxString);
-        // console.log("Ofx processado!")
-        // console.log("-----------------")
-        // const transactions = parsedData.OFX.BANKMSGSRSV1.STMTTRNRS.STMTRS.BANKTRANLIST.STMTTRN.map(
-        //     (ofxTransaction) => {
-        //         return OfxModel.parseTransaction(ofxTransaction);
-        //     }
-        // );
-
-        // console.log("Retornou transações")
-        // return transactions;
     }
 }
 

@@ -1,12 +1,6 @@
-const ofx = require("ofx");
 const { parseISO, format } = require("date-fns");
-
-
+const ofx = require("ofx");
 class OfxService {
-    constructor() {
-
-    }
-
     static processOfx(ofxData) {
         try {
             const base64Data = ofxData;
